@@ -1,1 +1,1 @@
-{"name":"voorbeeld-app","private":true,"type":"module","scripts":{"dev":"vite","build":"vite build"},"devDependencies":{"vite":"^8.2.2"}}
+{"name":"voorbeeld-app","private":true,"type":"module","scripts":{"dev":"vite","build":"vite build"},"devDependencies":{"@capacitor/android":"^8.5.1","@capacitor/cli":"^8.5.1","vite":"^8.2.2"},"dependencies":{"@capacitor/core":"^8.5.1"}}

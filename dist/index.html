@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0b1220" />
+    <meta
+      name="description"
+      content="Een eenvoudige weer-PWA met Capacitor."
+    />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+    <title>Weer Demo</title>
+    <script type="module" crossorigin src="/assets/index-CYaff2y5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Beww-TB9.css">
+  </head>
+
+  <body>
+    <main class="app-shell">
+      <section class="weather-card" aria-labelledby="app-title">
+        <div class="card-header">
+          <div>
+            <p class="eyebrow">Evergem</p>
+            <h1 id="app-title">Weer Demo</h1>
+          </div>
+
+          <span id="platform" class="platform-badge">web</span>
+        </div>
+
+        <div
+          id="weather-output"
+          class="weather-output"
+          aria-live="polite"
+        >
+          <span class="weather-icon" aria-hidden="true">☁️</span>
+          <p id="weather-text">
+            Druk op de knop om het actuele weer op te halen.
+          </p>
+        </div>
+
+        <button id="weather-button" type="button">
+          Weer ophalen
+        </button>
+
+        <p id="status-text" class="status-text"></p>
+      </section>
+    </main>
+
+  </body>
+</html>
