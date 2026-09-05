@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #dbeafe;
+  color: #1e293b;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-card {
+  width: 300px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px #94a3b8;
+}
+
+.eyebrow {
+  color: #0284c7;
+  font-weight: bold;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.platform-badge {
+  display: none;
+}
+
+.weather-output {
+  margin: 30px 0;
+}
+
+.weather-icon {
+  display: block;
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+#weather-text {
+  min-height: 50px;
+  line-height: 1.5;
+}
+
+#weather-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #0284c7;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#weather-button:hover {
+  background-color: #0369a1;
+}
+
+.status-text {
+  min-height: 20px;
+  color: #64748b;
+  font-size: 14px;
+}
