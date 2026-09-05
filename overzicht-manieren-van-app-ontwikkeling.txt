@@ -1,0 +1,302 @@
+MANIEREN OM EEN APP TE MAKEN
+
+1. VOLLEDIG NATIVE
+
+Android:
+- Kotlin of Java
+- Jetpack Compose of Android Views
+- Gebouwd met Android Studio
+
+iOS:
+- Swift of Objective-C
+- SwiftUI of UIKit
+- Gebouwd met Xcode
+
+Eigenschappen:
+- Beste prestaties
+- Volledige toegang tot hardware en OS-functies
+- Interface volgt het platform perfect
+- Aparte code en ontwikkeling voor Android en iOS
+- Hoogste ontwikkelkost
+- Publiceerbaar in Play Store en App Store
+
+
+2. CROSS-PLATFORM MET NATIVE UI
+
+Voorbeelden:
+- React Native
+- .NET MAUI
+- NativeScript
+
+Werking:
+- Je schrijft grotendeels een gedeelde codebase
+- Het framework gebruikt native bedieningselementen
+- JavaScript, TypeScript of C# communiceert met native code
+
+Eigenschappen:
+- Goede tot zeer goede prestaties
+- Android en iOS vanuit dezelfde codebase
+- Toegang tot native functies via plugins of bridges
+- Soms platformspecifieke code nodig
+- Complexer dan een gewone webapp
+- Publiceerbaar in beide appstores
+
+
+3. CROSS-PLATFORM MET EIGEN RENDERER
+
+Voorbeeld:
+- Flutter met Dart
+
+Werking:
+- Flutter tekent de interface grotendeels zelf
+- Dezelfde interface draait op Android, iOS, web en desktop
+
+Eigenschappen:
+- Zeer consistente interface
+- Goede prestaties
+- Een grote gedeelde codebase
+- Interface ziet er niet automatisch volledig native uit
+- Grotere applicatiebestanden
+- Flutter en Dart moeten worden aangeleerd
+- Publiceerbaar in beide appstores
+
+
+4. GEDEELDE LOGICA MET NATIVE INTERFACE
+
+Voorbeeld:
+- Kotlin Multiplatform
+
+Werking:
+- Bedrijfslogica, API-code en datamodellen worden gedeeld
+- Android en iOS kunnen elk hun eigen native interface behouden
+
+Eigenschappen:
+- Native gebruikerservaring
+- Veel logica kan worden hergebruikt
+- Meer werk dan Flutter of React Native
+- Goede keuze voor grotere professionele apps
+- Platformspecifieke kennis blijft nodig
+
+
+5. HYBRIDE APP MET WEBVIEW
+
+Voorbeelden:
+- Capacitor
+- Ionic met Capacitor
+- Apache Cordova
+- Tauri Mobile
+
+Werking:
+- De interface bestaat uit HTML, CSS en JavaScript
+- De webapp draait in een native WebView
+- Een native container maakt er een Android- of iOS-app van
+
+Eigenschappen:
+- Zeer geschikt voor bestaande webapps
+- Een codebase voor web, Android en iOS
+- Webkennis is voldoende voor de basis
+- Native functies zijn bereikbaar via plugins
+- Iets minder performant bij zware animaties of complexe graphics
+- Publiceerbaar in beide appstores
+
+Voorbeeld:
+
+HTML, CSS en JavaScript
+        |
+        v
+       Vite
+        |
+        v
+       dist
+        |
+        v
+    Capacitor
+        |
+        v
+Android-project
+        |
+        v
+       APK
+
+
+6. PROGRESSIVE WEB APP
+
+Voorbeeld:
+- Website met manifest en service worker
+
+Werking:
+- De app draait in de browser
+- De gebruiker kan ze installeren vanaf de website
+- Een service worker kan bestanden offline bewaren
+
+Eigenschappen:
+- Geen aparte Android- of iOS-code nodig
+- Updates zijn onmiddellijk beschikbaar
+- Kan offline werken
+- Geen appstore nodig
+- Goedkoopste en eenvoudigste oplossing
+- Beperktere toegang tot sommige native functies
+- Ondersteuning verschilt tussen Android en iOS
+- De app blijft technisch een website
+
+
+7. WEBSITE IN EEN EENVOUDIGE APP-WRAPPER
+
+Voorbeelden:
+- Android WebView-app
+- Trusted Web Activity
+- Website-to-app-diensten
+
+Werking:
+- De native app opent hoofdzakelijk een bestaande website
+- De inhoud staat meestal op een externe webserver
+
+Eigenschappen:
+- Zeer snel te bouwen
+- Kleine hoeveelheid native code
+- Internetverbinding meestal noodzakelijk
+- Beperkte native integratie
+- Kan problemen geven bij appstore-controle
+- Minder geschikt als de app alleen een lege wrapper rond een site is
+
+
+8. GAME ENGINE
+
+Voorbeelden:
+- Unity
+- Godot
+- Unreal Engine
+
+Werking:
+- De game engine beheert graphics, geluid, physics en input
+- Dezelfde game kan naar meerdere platformen worden geexporteerd
+
+Eigenschappen:
+- Ideaal voor games, 3D, VR en AR
+- Goede grafische prestaties
+- Minder geschikt voor gewone formulieren en bedrijfsapps
+- Grotere builds
+- Eigen programmeertalen en ontwikkelomgeving
+- Publiceerbaar op mobiel, desktop, web en consoles
+
+
+9. LOW-CODE OF NO-CODE
+
+Voorbeelden:
+- Power Apps
+- AppSheet
+- FlutterFlow
+- Adalo
+- Thunkable
+
+Werking:
+- De app wordt grotendeels visueel samengesteld
+- Logica wordt via blokken, workflows of formulieren ingesteld
+
+Eigenschappen:
+- Snel resultaat
+- Weinig programmeerkennis nodig
+- Geschikt voor prototypes en interne bedrijfsapps
+- Minder vrijheid en controle
+- Vaak maandelijkse kosten
+- Afhankelijkheid van het gekozen platform
+- Complexe functies worden snel moeilijk
+
+
+10. DESKTOP-APP MET WEBTECHNOLOGIE
+
+Voorbeelden:
+- Electron
+- Tauri
+- Neutralino
+
+Werking:
+- HTML, CSS en JavaScript worden als desktop-app verpakt
+- Electron levert een eigen Chromium-browser mee
+- Tauri gebruikt meestal de WebView van het besturingssysteem
+
+Eigenschappen:
+- Geschikt voor Windows, Linux en macOS
+- Bestaande webcode kan worden hergebruikt
+- Electron-apps zijn relatief groot
+- Tauri-apps zijn meestal kleiner
+- Toegang tot bestanden en andere desktopfuncties
+- Niet bedoeld als primaire oplossing voor mobiele apps
+
+
+11. GEWONE RESPONSIVE WEBSITE
+
+Werking:
+- De website past zich aan telefoon, tablet en computer aan
+- De gebruiker opent ze via een browser
+
+Eigenschappen:
+- Eenvoudigste oplossing
+- Geen installatie nodig
+- Werkt op vrijwel ieder apparaat
+- Updates zijn direct zichtbaar
+- Geen echte appstore-app
+- Beperkte offline en native mogelijkheden
+
+
+VERGELIJKING
+
+Methode                 Prestatie   Native functies   Code delen   Moeilijkheid
+Native                   Zeer hoog   Volledig          Laag         Hoog
+React Native/.NET MAUI   Hoog        Zeer goed         Hoog         Gemiddeld
+Flutter                  Hoog        Zeer goed         Hoog         Gemiddeld
+Kotlin Multiplatform     Zeer hoog   Volledig          Gemiddeld    Hoog
+Capacitor                Goed        Via plugins       Zeer hoog    Laag
+PWA                      Goed        Beperkt            Volledig     Laag
+Website-wrapper          Voldoende   Beperkt            Volledig     Laag
+Game engine              Zeer hoog   Zeer goed         Hoog         Hoog
+Low-code/no-code         Wisselend   Platformafhankelijk Hoog       Laag
+Electron/Tauri           Goed        Desktopfuncties    Hoog         Gemiddeld
+Responsive website       Goed        Zeer beperkt       Volledig     Laag
+
+
+WANNEER WELKE KIEZEN
+
+Gewone website:
+- Als installatie en native functies niet nodig zijn
+
+PWA:
+- Als de app installeerbaar en gedeeltelijk offline moet zijn
+
+Capacitor:
+- Als je HTML, CSS en JavaScript als echte mobiele app wilt publiceren
+
+React Native of Flutter:
+- Als mobiel centraal staat en prestaties belangrijker zijn
+
+Native Kotlin en Swift:
+- Als maximale prestaties en volledige platformintegratie vereist zijn
+
+Kotlin Multiplatform:
+- Als logica gedeeld moet worden, maar de interface native moet blijven
+
+Unity, Godot of Unreal:
+- Voor games, 3D, VR of AR
+
+Low-code:
+- Voor snelle prototypes en eenvoudige interne toepassingen
+
+Electron of Tauri:
+- Als een webapp ook een Windows-, Linux- of macOS-programma moet worden
+
+
+BELANGRIJK
+
+De keuze van de frontend bepaalt niet automatisch de backend.
+
+Iedere methode kan communiceren met:
+- Een REST API
+- Een GraphQL API
+- Een Node.js-backend
+- Een PHP-backend
+- Een Java- of .NET-backend
+- Een database via een beveiligde backend
+
+Een mobiele app maakt normaal niet rechtstreeks verbinding met een database.
+
+App -> HTTPS API -> Backend -> Database
