@@ -1,0 +1,48 @@
+De map /home/tim/dev/voorbeeld-app mag vooraf nog niet bestaan.
+
+cd /home/tim/dev
+npm create vite@latest voorbeeld-app -- --template vanilla
+cd /home/tim/dev/voorbeeld-app
+npm install
+
+Vervang index.html door je eigen index.html.
+Vervang src/main.js door je eigen main.js.
+Vervang src/style.css door je eigen style.css.
+
+npm run dev
+
+Open http://localhost:5173 in de browser.
+Stop Vite met Ctrl+C.
+
+npm install @capacitor/core
+npm install --save-dev @capacitor/cli @capacitor/android
+
+npx cap init "Voorbeeld App" "be.sfe.voorbeeldapp" --web-dir dist
+
+npm run build
+npx cap add android
+
+Voer na elke wijziging aan HTML, CSS of JavaScript het volgende uit:
+
+npm run build
+npx cap sync android
+
+CAPACITOR_ANDROID_STUDIO_PATH=/opt/android-studio/bin/studio.sh npx cap open android
+
+Kies in Android Studio een emulator en klik op Run.
+
+export JAVA_HOME=/opt/android-studio/jbr
+export PATH="$JAVA_HOME/bin:$PATH"
+
+cd /home/tim/dev/voorbeeld-app/android
+./gradlew assembleDebug
+
+De debug-APK staat in:
+
+/home/tim/dev/voorbeeld-app/android/app/build/outputs/apk/debug/app-debug.apk
+
+Voor een finale ondertekende APK kies je in Android Studio:
+
+Build > Generate Signed App Bundle or APK > APK
+
+Maak of selecteer een JKS-keystore en kies de buildvariant release.
