@@ -300,3 +300,6 @@ Iedere methode kan communiceren met:
 Een mobiele app maakt normaal niet rechtstreeks verbinding met een database.
 
 App -> HTTPS API -> Backend -> Database
+
+
+CRUD :-)
