@@ -1,0 +1,51 @@
+1. Node.js en Android Studio installeren
+-----------------------
+winget install --id OpenJS.NodeJS.LTS -e
+winget install --id Google.AndroidStudio -e
+node -v
+npm -v
+
+2. Android Studio voorbereiden
+-------------------------------
+Start Android Studio en doorloop de Setup Wizard. Installeer:
+Android SDK
+Android SDK Platform-Tools
+Android Emulator
+
+Maak daarna via Tools → Device Manager een emulator.
+
+3. Nieuw Vite-project maken
+---------------------------
+mkdir "$HOME\dev" -Force
+cd "$HOME\dev"
+
+npm create vite@latest voorbeeld-app -- --template vanilla
+cd voorbeeld-app
+npm install
+npm run dev
+
+4. Capacitor toevoegen
+----------------------
+npm install @capacitor/core
+npm install --save-dev @capacitor/cli @capacitor/android
+
+npx cap init "Voorbeeld App" "be.sfe.voorbeeldapp" --web-dir dist
+
+npm run build
+npx cap add android
+npx cap sync android
+npx cap open android
+
+5. APK compileren
+-----------------
+$env:JAVA_HOME = "C:\Program Files\Android\Android Studio\jbr"
+
+cd android
+.\gradlew.bat assembleDebug
+
+De APK staat hier: android\app\build\outputs\apk\debug\app-debug.apk
+
+6. Na iedere wijziging aan HTML, CSS of JavaScript:
+--------------------------------------------------
+npm run build
+npx cap sync android

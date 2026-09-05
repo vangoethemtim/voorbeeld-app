@@ -1,0 +1,27 @@
+npm is de pakketbeheerder voor JavaScript.
+Het installeert hulpmiddelen en bibliotheken in de map node_modules.
+Het voert ook scripts uit package.json uit.
+
+npm install
+npm run dev
+
+Vite is de ontwikkelserver en buildtool. Tijdens de ontwikkeling toont Vite de website op localhost.
+Voor productie bundelt en optimaliseert Vite de HTML, CSS en JavaScript. Het resultaat komt in de map dist.
+
+npm run dev
+npm run build
+
+Capacitor verpakt de inhoud van dist in een Android- of iOS-app.
+De webapp draait daarin in een native WebView.
+Via Capacitor-plugins kan JavaScript native functies gebruiken, zoals de camera, GPS en notificaties.
+
+npx cap sync android
+npx cap open android
+
+De volledige keten is:
+HTML, CSS en JavaScript -> Vite -> dist -> Capacitor -> Android-app -> APK
+
+npm installeert en beheert de hulpmiddelen die tijdens deze stappen worden gebruikt.
+
+Capacitor zet JavaScript niet om naar Kotlin.
+Het plaatst de webapp in een native appcontainer.
