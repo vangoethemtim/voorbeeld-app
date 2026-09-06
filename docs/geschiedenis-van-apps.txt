@@ -1,0 +1,483 @@
+Een moderne smartphone-app is eigenlijk het eindpunt van een lange evolutie. De basisideeën zijn nauwelijks veranderd: er is code, die code draait ergens, verwerkt input en geeft output terug.
+
+In het begin waren er gewoon programma’s.
+
+Je startte bijvoorbeeld:
+
+C:\> wordperfect.exe
+
+Het programma werd van disk in het geheugen geladen, de CPU voerde de instructies uit, en wanneer je het programma afsloot, stopte het.
+
+computer
+  |
+  +-- operating system
+       |
+       +-- program.exe
+
+Zo'n programma deed meestal alles zelf: gebruikersinterface, logica, bestanden lezen en schrijven.
+
+Een tekstverwerker kon bijvoorbeeld rechtstreeks een bestand openen:
+
+WordPerfect
+    |
+    +--> document.txt
+
+Er was nauwelijks netwerk nodig.
+
+Toen computers meer dingen tegelijk begonnen te doen, ontstond het idee van achtergrondprogramma's.
+
+Op Unix/Linux noemen we die typisch daemons; op Windows services.
+
+Bijvoorbeeld:
+
+sshd
+cups
+mysqld
+postgresql
+apache
+
+Die programma's starten meestal automatisch en blijven draaien.
+
+programma
+   start
+     |
+     v
++-----------+
+|   sshd    |
+| running   |
+| running   |
+| running   |
++-----------+
+
+Een service wacht meestal op iets.
+
+Bijvoorbeeld SSH:
+
+SSH client
+    |
+    | TCP port 22
+    v
+  sshd
+
+Of MySQL:
+
+programma
+    |
+    | SQL
+    v
+ MySQL server
+
+Daaruit groeide het klassieke client-servermodel.
+
+In plaats van één programma dat alles zelf doet:
+
+PROGRAMMA
+  UI
+  logica
+  data
+
+kreeg je:
+
+CLIENT                     SERVER
+
+programma.exe   ------->   serverprogramma
+                              |
+                              v
+                           database
+
+Bijvoorbeeld een boekhoudprogramma:
+
+boekhouding.exe
+       |
+       | netwerk
+       v
+boekhouding-server
+       |
+       v
+SQL database
+
+Dat was een enorme verandering: meerdere computers konden dezelfde centrale gegevens gebruiken.
+
+Toen kwam het internet.
+
+Het interessante van het web was dat je niet langer voor elk systeem een apart clientprogramma hoefde te installeren.
+
+Je had al een universele client:
+
+browser
+
+De browser spreekt HTTP met een webserver.
+
+Chrome
+   |
+   | HTTP
+   v
+Apache / nginx / IIS
+   |
+   v
+PHP / Java / ASP / ...
+   |
+   v
+database
+
+Bijvoorbeeld:
+
+GET /leerlingen
+
+De server antwoordt:
+
+<html>
+  <h1>Leerlingen</h1>
+</html>
+
+De browser toont die HTML.
+
+De browser werd dus eigenlijk een soort universeel applicatieplatform.
+
+Eerst waren websites vooral documenten.
+
+browser
+   |
+GET index.html
+   |
+server
+
+Maar ze werden steeds interactiever.
+
+JavaScript maakte het mogelijk om code op de computer van de gebruiker uit te voeren.
+
+browser
+ ├── HTML       structuur
+ ├── CSS        uiterlijk
+ └── JavaScript gedrag
+
+Toen ontstonden echte webapplicaties.
+
+Gmail is bijvoorbeeld veel meer een applicatie dan een traditionele website.
+
+De volgende belangrijke stap was het scheiden van frontend en backend.
+
+Vroeger:
+
+browser
+   |
+   v
+PHP
+   |
+   +--> genereert HTML
+
+Later:
+
+frontend
+HTML/CSS/JavaScript
+       |
+       | API
+       v
+backend
+Node / PHP / Java / Python
+       |
+       v
+database
+
+De backend stuurt dan niet noodzakelijk HTML terug, maar data.
+
+Bijvoorbeeld:
+
+GET /api/students/123
+
+antwoord:
+
+{
+  "name": "Jan",
+  "class": "5ICW"
+}
+
+JavaScript bouwt daar vervolgens de interface mee.
+
+Dat is de oorsprong van veel moderne apps.
+
+Een API kun je eigenlijk zien als een service die andere programma's kunnen gebruiken.
+
+             +--> website
+             |
+API server --+--> smartphone app
+             |
+             +--> administratieprogramma
+             |
+             +--> andere server
+
+Dezelfde backend kan dus tientallen verschillende clients bedienen.
+
+Toen kwamen smartphones.
+
+De eerste smartphone-apps waren opnieuw vrij klassieke programma's.
+
+Op iPhone bijvoorbeeld:
+
+iPhone
+  |
+  +-- iOS
+       |
+       +-- App
+
+De app wordt geïnstalleerd, gestart en draait lokaal.
+
+Dat lijkt eigenlijk sterk op:
+
+Windows
+  |
+  +-- programma.exe
+
+Alleen noemen we het nu een app.
+
+"App" is gewoon een verkorting van "application".
+
+Het grote verschil is dat moderne apps bijna altijd netwerksoftware zijn.
+
+Bijvoorbeeld de Instagram-app:
+
+iPhone
+   |
+Instagram app
+   |
+   | HTTPS
+   v
+Instagram API
+   |
+   +--> gebruikersservice
+   +--> fotoservice
+   +--> berichtendienst
+   +--> aanbevelingssysteem
+   |
+   v
+databases
+
+De app op je telefoon bevat dus meestal helemaal niet "Instagram".
+
+Het is vooral de interface.
+
+Het echte systeem draait grotendeels op servers.
+
+Je kunt het ongeveer zo zien:
+
+SMARTPHONE
+
++---------------------+
+|      frontend       |
+|                     |
+| buttons             |
+| schermen            |
+| camera              |
+| animaties           |
++----------+----------+
+           |
+           | HTTPS / JSON
+           v
+
+INTERNET
+
+           |
+           v
+
++---------------------+
+|       backend       |
+|                     |
+| gebruikers          |
+| business logic      |
+| permissions         |
+| notifications       |
++----------+----------+
+           |
+           v
+
++---------------------+
+|      database       |
++---------------------+
+
+Daarna werden ook de servers zelf opgesplitst.
+
+Vroeger had je bijvoorbeeld:
+
+schoolapp-server
+
+met één groot programma.
+
+Dat noemen we tegenwoordig vaak een monolith.
+
++----------------------+
+| School App           |
+|                      |
+| users                |
+| leerlingen           |
+| punten               |
+| berichten            |
+| betalingen           |
++----------------------+
+
+Bij grotere systemen gingen ontwikkelaars dat opsplitsen in services:
+
+                +--> user service
+                |
+app --> API ----+--> student service
+                |
+                +--> payment service
+                |
+                +--> notification service
+
+Dat leidde uiteindelijk tot microservices.
+
+Elke service kan een apart programma zijn:
+
+users-service
+students-service
+payments-service
+notifications-service
+
+en soms zelfs een eigen database hebben.
+
+Daar bovenop kwam cloud computing.
+
+Vroeger:
+
+serverkast
+   |
+   +-- webserver
+   +-- databaseserver
+
+Nu kan dezelfde architectuur bijvoorbeeld draaien als:
+
+cloud
+ |
+ +-- containers
+ |
+ +-- databases
+ |
+ +-- object storage
+ |
+ +-- message queues
+ |
+ +-- serverless functions
+ |
+ +-- CDN
+
+Voor de smartphone verandert er weinig:
+
+app
+ |
+ | HTTPS
+ v
+api.example.com
+
+De app weet vaak niet eens waar die server fysiek draait.
+
+Vandaag bestaan er daardoor verschillende soorten "apps".
+
+Een native app:
+
+Swift
+  -> iOS app
+
+Kotlin
+  -> Android app
+
+Een cross-platform app:
+
+React Native
+Flutter
+.NET MAUI
+
+waarmee één codebase meerdere platformen bedient.
+
+Een hybride app:
+
+HTML
+CSS
+JavaScript
+   |
+   v
+WebView
+   |
+   v
+native app container
+
+Bijvoorbeeld met Capacitor.
+
+En een PWA:
+
+website
+  +
+manifest
+  +
+service worker
+  =
+PWA
+
+die zich gedeeltelijk als een geïnstalleerde app gedraagt.
+
+Je kunt de hele evolutie daarom samenvatten als:
+
+PROGRAMMA
+   |
+   v
+achtergrondprogramma
+   |
+   v
+SERVICE
+   |
+   v
+CLIENT <----> SERVER
+   |
+   v
+WEB SERVER
+   |
+   v
+WEB APPLICATION
+   |
+   v
+API + FRONTEND
+   |
+   +--------------+
+   |              |
+website       smartphone app
+                  |
+                  v
+             cloud services
+
+En conceptueel zijn we eigenlijk weer bijna waar we begonnen:
+
+1975
+programma
+  |
+  v
+computer
+
+tegenover:
+
+2026
+app
+ |
+ v
+operating system
+ |
+ v
+CPU
+
+Alleen is dat programma vandaag vaak het zichtbare topje van een veel groter systeem:
+
+                 APP
+                  |
+                HTTPS
+                  |
+                 API
+                  |
+        +---------+---------+
+        |         |         |
+      auth      data     storage
+        |         |         |
+        +---------+---------+
+                  |
+              databases
+                  |
+              cloud
+
+De fundamentele bouwstenen zijn dus nog steeds verrassend eenvoudig: een programma is draaiende code, een service is meestal een programma dat blijft draaien en op requests wacht, een API is een afgesproken manier om zo'n service aan te spreken, en een moderne smartphone-app is meestal een lokale client die met een hele verzameling services op internet communiceert.
